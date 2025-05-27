@@ -131,7 +131,7 @@ You’ll be redirected to the **billing setup page**.
 sudo passwd your-username
 ```
 
-### Setup FileZilla (Optional but Recommended)
+### Setup FileZilla (Optional but Recommended if you want to upload/download large files)
 
 1. Open FileZilla  
 2. Go to **Edit → Settings → SFTP**  
@@ -169,9 +169,10 @@ sudo passwd your-username
 
 ## Step 6 → Uploading Your Foundry
 
-1. Use **FileZilla** to upload your Foundry `.zip` file to the VM
-2. Connect to the VM via **PuTTY**
-3. Install `unzip` if needed:
+1. Option 1: If you installed FileZilla, Use **FileZilla** to upload your Foundry `.zip` file to the VM
+2. Option 2: Wse the wget command on Foundry's download section, to download Node version's Zip file
+3. Connect to the VM via **PuTTY**
+4. Install `unzip` if needed:
 
 ```bash
 sudo apt-get install unzip
