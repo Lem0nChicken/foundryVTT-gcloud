@@ -6,7 +6,6 @@
 - [Step 1 → Downloading FoundryVTT](#step-1--downloading-foundryvtt)
 - [Step 2 → Creating a Google Cloud Account](#step-2--creating-a-google-cloud-account)
 - [Step 3 → Creating your Virtual Machine](#step-3--creating-your-virtual-machine)
-- [Reminder: Following Configuration is required for free tier](#reminder-following-configuration-is-required-for-free-tier)
 - [Step 4 → Setting up connections to this VM instance](#step-4--setting-up-connections-to-this-vm-instance)
 - [Step 5 → Opening VM Firewall for FoundryVTT](#step-5--opening-vm-firewall-for-foundryvtt)
 - [Step 6 → Uploading Your Foundry](#step-6--uploading-your-foundry)
