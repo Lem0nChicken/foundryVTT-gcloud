@@ -12,28 +12,28 @@
 - [Step 6 → Uploading Your Foundry](#step-6--uploading-your-foundry)
 - [Step 7 → Installing Node.js and PM2](#step-7--installing-nodejs-and-pm2)
 - [Step 8 → Running FoundryVTT with PM2](#step-8--running-foundryvtt-with-pm2)
+- [Bonus good-to-know commands](#bonus-good-to-know-commands)
 
-
-## Step 0 → Prerequisites:
+## Step 0 → Prerequisites
 
 - FoundryVTT
-- A Google (Gmail) account or create one at https://accounts.google.com/signup
+- A Google (Gmail) account or create one at <https://accounts.google.com/signup>
 - A **valid credit/debit card or an UPI account** → used for identity verification, google will deduct and refund a small amount from your account; you won’t be charged anything during the free trial unless you manually upgrade
 - Basic Linux CLI knowledge
 - Google Free tier offers you:
-    - 1 e2-micro instance per month (ONLY in certain U.S. regions)
-    - 30 GB of HDD (standard) boot disk
-    - 1 GB network egress (outbound) per month
+  - 1 e2-micro instance per month (ONLY in certain U.S. regions)
+  - 30 GB of HDD (standard) boot disk
+  - 1 GB network egress (outbound) per month
 
-## Step 1 → Downloading FoundryVTT:
+## Step 1 → Downloading FoundryVTT
 
 - Download the NODE version of foundry and save it to your system, keep it aside for now
 
-## Step 2 → Creating a Google Cloud Account:
+## Step 2 → Creating a Google Cloud Account
 
-- Go to https://cloud.google.com/
+- Go to <https://cloud.google.com/>
 - Click **“Get started for free”** (top-right corner).
-- Sign in with your **Google account** if prompted. 
+- Sign in with your **Google account** if prompted.
 You’ll be redirected to the **billing setup page**.
 
 ### a. **Country Selection**
@@ -49,9 +49,9 @@ You’ll be redirected to the **billing setup page**.
 ### c. **Name & Address**
 
 - Fill in:
-    - Name
-    - Billing address
-    - Phone number (sometimes optional)
+  - Name
+  - Billing address
+  - Phone number (sometimes optional)
 
 ### d. **Payment Information**
 
@@ -61,49 +61,49 @@ You’ll be redirected to the **billing setup page**.
 - You’ll now see a confirmation page saying your **$300 free credit** is active (valid for 90 days).
 - Click **“Go to Console”** to access your dashboard.
 - Create a new project:
-    - In the top menu bar, click the **project dropdown** (top-left).
-    - Click **“NEW PROJECT”**. and enter project name
-    - Your project is now ready to use.
+  - In the top menu bar, click the **project dropdown** (top-left).
+  - Click **“NEW PROJECT”**. and enter project name
+  - Your project is now ready to use.
 
 ## Step 3 → Creating your Virtual Machine
 
 - Make sure you’ve selected your **project** (top-left project dropdown)
 - Enable Compute Engine API:
-    - In the left-hand **Navigation Menu** (☰), go to:
-        - Compute Engine → VM instances
-    - Click **“Enable”** to activate the Compute Engine API (wait ~1 minute)
+  - In the left-hand **Navigation Menu** (☰), go to:
+    - Compute Engine → VM instances
+  - Click **“Enable”** to activate the Compute Engine API (wait ~1 minute)
 - Create a New VM Instance:
-    - After the API is enabled, click **“Create Instance”**
-    - You'll now see the **VM configuration page**
+  - After the API is enabled, click **“Create Instance”**
+  - You'll now see the **VM configuration page**
 - Configure Your VM:
-    - **Name**:
-        - Choose a name like `my-foundry-vm`
-        - Lowercase letters, numbers, and dashes only
-    - **Region & Zone** *(VERY important for free tier)* Choose between:
-        - **us-west1** (Oregon)
-        - **us-central1** (Iowa)
-        - **us-east1** (South Carolina)
+  - **Name**:
+    - Choose a name like `my-foundry-vm`
+    - Lowercase letters, numbers, and dashes only
+  - **Region & Zone** *(VERY important for free tier)* Choose between:
+    - **us-west1** (Oregon)
+    - **us-central1** (Iowa)
+    - **us-east1** (South Carolina)
 
         ⚠️ Only these regions qualify for Free Tier usage
 
-    - **Machine Configuration**:
-        - **Series**: Select `E2`
-        - **Machine Type**: Select `e2-micro` (this is the only one free)
-    - **Boot Disk**:
-        - Click **“Change”**:
-            - **OS**: Use **Ubuntu 22.04 LTS (or whichever latest LTS version is present)**
-            - **Disk Type**: Set to **Standard persistent disk (HDD)** — NOT SSD
-            - **Disk Size**: Set to **30 GB or less**
-            - Click **Select**
-    - **Firewall**: Allow both HTTP and HTTPS traffic
-    - Click **“Create”** at the bottom
-    - If the VM instance is in suspended stage, make sure to start it by clicking on 3 dots at the end of its row
-    - Done!, you got your VM Instance up and running
-    - If needed, you can access this instance via in-browser SSH by clicking on `SSH` button in VM Instances page
-    - You can Upload/Download files from here as well, but it is very slow, so I recommend using fileZilla
-    - Recommendation (Optional): Run `sudo apt-get update`  when logging in fir first time
+  - **Machine Configuration**:
+    - **Series**: Select `E2`
+    - **Machine Type**: Select `e2-micro` (this is the only one free)
+  - **Boot Disk**:
+    - Click **“Change”**:
+      - **OS**: Use **Ubuntu 22.04 LTS (or whichever latest LTS version is present)**
+      - **Disk Type**: Set to **Standard persistent disk (HDD)** — NOT SSD
+      - **Disk Size**: Set to **30 GB or less**
+      - Click **Select**
+  - **Firewall**: Allow both HTTP and HTTPS traffic
+  - Click **“Create”** at the bottom
+  - If the VM instance is in suspended stage, make sure to start it by clicking on 3 dots at the end of its row
+  - Done!, you got your VM Instance up and running
+  - If needed, you can access this instance via in-browser SSH by clicking on `SSH` button in VM Instances page
+  - You can Upload/Download files from here as well, but it is very slow, so I recommend using fileZilla
+  - Recommendation (Optional): Run `sudo apt-get update`  when logging in fir first time
 
-## Reminder: Following Configuration is required for free tier:
+## Reminder: Following Configuration is required for free tier
 
 | Resource | Free Tier Limit | How to Stay Safe |
 | --- | --- | --- |
@@ -113,22 +113,22 @@ You’ll be redirected to the **billing setup page**.
 | **Uptime** | 744 hours/month (1 VM) | Don’t run more than 1 instance |
 | **Network** | 1 GB egress/month | Avoid large downloads/uploads |
 
-## Step 4: Setting up connections to this VM instance:
+## Step 4 → Setting up connections to this VM instance
 
 - In your local machine, Install following softwares:
-    - [**PuTTY**](https://www.putty.org/)
-    - **PuTTYgen** (comes with PuTTY)
-    - [**FileZilla**](https://filezilla-project.org/)
+  - [**PuTTY**](https://www.putty.org/)
+  - **PuTTYgen** (comes with PuTTY)
+  - [**FileZilla**](https://filezilla-project.org/)
 - Create an SSH Key Pair Using PuTTYgen
-    - Open **PuTTYgen**
-    - **Key type**: Leave as `RSA`, and bits as `2048`
-    - Click **Generate**, move your mouse randomly in the blank area
-    - Enter the linux which you want to use in `Key Comment`  Section
-    - REMEMBER to enter a Key Passphrase (its like a password for your private key)
-    - Once generated:
-        - **Save private key with appropriate name** (e.g., `gcp-private.ppk`)
-        - **Copy the entire public key** from the top box
-        - Leave PuTTYgen open
+  - Open **PuTTYgen**
+  - **Key type**: Leave as `RSA`, and bits as `2048`
+  - Click **Generate**, move your mouse randomly in the blank area
+  - Enter the linux which you want to use in `Key Comment`  Section
+  - REMEMBER to enter a Key Passphrase (its like a password for your private key)
+  - Once generated:
+    - **Save private key with appropriate name** (e.g., `gcp-private.ppk`)
+    - **Copy the entire public key** from the top box
+    - Leave PuTTYgen open
 
 ### Connect Using PuTTY
 
@@ -170,13 +170,13 @@ sudo passwd your-username
 2. Click **Create Firewall Rule**
 3. Use the following settings:
 
-| Field                 | Value                          |
-|-----------------------|--------------------------------|
-| Name                  | `allow-port-30000`             |
-| Network               | `default`                      |
-| Targets               | All instances in the network   |
-| Source IP Ranges      | `0.0.0.0/0`                    |
-| Protocols and Ports   | `tcp:30000`                    |
+    | Field                 | Value                          |
+    |-----------------------|--------------------------------|
+    | Name                  | `allow-port-30000`             |
+    | Network               | `default`                      |
+    | Targets               | All instances in the network   |
+    | Source IP Ranges      | `0.0.0.0/0`                    |
+    | Protocols and Ports   | `tcp:30000`                    |
 
 4. Click **Create**
 
@@ -187,74 +187,96 @@ sudo passwd your-username
 3. Connect to the VM via **PuTTY**
 4. Install `unzip` if needed:
 
-```bash
-sudo apt-get install unzip
-```
+    ```bash
+    sudo apt-get install unzip
+    ```
 
-4. Navigate to the upload location  
-5. Create a folder:
+5. Navigate to the upload location  
+6. Create a folder:
 
-```bash
-mkdir FoundryVTT_main
-```
+    ```bash
+    mkdir FoundryVTT_main
+    ```
 
-6. Unzip the FoundryVTT archive:
+7. Unzip the FoundryVTT archive:
 
-```bash
-unzip your-file.zip -d FoundryVTT_main
-```
+    ```bash
+    unzip your-file.zip -d FoundryVTT_main
+    ```
 
 ## Step 7 → Installing Node.js and PM2
 
 1. SSH into the VM  
 2. Update packages:
 
-```bash
-sudo apt update && sudo apt upgrade -y
-```
+    ```bash
+    sudo apt update && sudo apt upgrade -y
+    ```
 
 3. Install Node.js (v20 from NodeSource):
 
-```bash
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt install -y nodejs
-```
+    ```bash
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt install -y nodejs
+    ```
 
 4. Verify installation:
 
-```bash
-node -v
-npm -v
-```
+    ```bash
+    node -v
+    npm -v
+    ```
 
 5. Install **PM2**:
 
-```bash
-sudo npm install -g pm2
-pm2 --version
-```
+    ```bash
+    sudo npm install -g pm2
+    pm2 --version
+    ```
 
 ## Step 8 → Running FoundryVTT with PM2
 
 1. Start Foundry:
 
-```bash
-pm2 start <path-to-your-foundry-directory>/main.js --name=foundry
-```
+    ```bash
+    pm2 start <path-to-your-foundry-directory>/main.js --name=foundry
+    ```
 
 2. Set PM2 to auto-start on boot:
 
-```bash
-pm2 startup
-pm2 save
-```
+    ```bash
+    pm2 startup
+    pm2 save
+    ```
 
 3. Access FoundryVTT in your browser:
 
-```
-http://<your-external-ip>:30000
-```
+    ```bash
+    http://<your-external-ip>:30000
+    ```
 
-## ✅ All Done!
+## ✅ All Done
 
 You now have FoundryVTT running on a **free Google Cloud VM**! 🎉
+
+## Bonus good-to-know commands
+
+1. To stop the running Foundry instance:
+
+    ```bash
+    pm2 kill
+    ```
+
+2. To check system stats being used by foundry:
+
+    a. Via PM2:
+
+    ```bash
+    pm2 ls
+    ```
+
+    b. Via linux in-built monitor:
+
+    ```bash
+    top
+    ```
