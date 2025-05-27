@@ -181,23 +181,26 @@ sudo passwd your-username
 
 ## Step 6 → Uploading Your Foundry
 
-1. Option 1: If you installed FileZilla, Use **FileZilla** to upload your Foundry `.zip` file to the VM
-2. Option 2: Wse the wget command on Foundry's download section, to download Node version's Zip file
-3. Connect to the VM via **PuTTY**
-4. Install `unzip` if needed:
+1. Either one of the follwing:
+    - Option 1: If you installed FileZilla, Use **FileZilla** to upload your Foundry `.zip` file to the VM
+    - Option 2: Use the wget command on Foundry's download section, to download Node version's Zip file directly in you VM
+2. Connect to the VM either via:
+    - **PuTTY**
+    - in-browser SSH
+3. Install `unzip` if needed:
 
     ```bash
     sudo apt-get install unzip
     ```
 
-5. Navigate to the upload location  
-6. Create a folder:
+4. Navigate to the upload location  
+5. Create a folder:
 
     ```bash
     mkdir FoundryVTT_main
     ```
 
-7. Unzip the FoundryVTT archive:
+6. Unzip the FoundryVTT archive:
 
     ```bash
     unzip your-file.zip -d FoundryVTT_main
