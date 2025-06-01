@@ -165,7 +165,7 @@ sudo passwd your-username
 
 ## Step 5 → Opening VM Firewall for FoundryVTT
 
-1. Go to [Firewall Rules](https://console.cloud.google.com/networking/firewalls)
+1. Go to Firewall Rules
 2. Click **Create Firewall Rule**
 3. Use the following settings:
 
